@@ -12,7 +12,7 @@ function Dashboard() {
 
   const { user } = useSelector((state) => state.auth)
   const { goals, isLoading, isError, message } = useSelector(
-    (state) => state.goals
+    (state) => state.goals || {}
   )
 
   useEffect(() => {
@@ -45,7 +45,7 @@ function Dashboard() {
       <GoalForm />
 
       <section className='content'>
-        {goals.length > 0 ? (
+        {goals > 0 ? (
           <div className='goals'>
             {goals.map((goal) => (
               <GoalItem key={goal._id} goal={goal} />
